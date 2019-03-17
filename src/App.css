@@ -1,33 +1,189 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
+  color: white;
   display: flex;
   flex-direction: column;
+}
+
+.countdown {
+  text-align: center;
+  font-size: 5rem;
+  margin: 40px 0;
+  letter-spacing: 1rem;
+}
+
+.ship-container {
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+}
+
+.enterprise {
+  position: relative;
+  display: inline-block;
+  height: 500px;
+  width: 200px;
+  margin-left: calc(50% - 100px);
+}
+
+.saucer {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#fff, #ccc);
+  box-shadow: 0px 3px 10px #3339;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.name,
+.model {
+  text-transform: uppercase;
+  transform: rotate(180deg);
+  font-family: 'Play', sans-serif;
 }
 
-@keyframes App-logo-spin {
+.name {
+  font-size: 5px;
+  position: absolute;
+  top: 60px;
+  color: #000;
+}
+
+.model {
+  color: #000a;
+  font-size: 16px;
+  position: absolute;
+  width: 50px;
+  top: 30px;
+}
+
+.bridge {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  border: solid 1px #ccc;
+  background-color: #eee;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bridge::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  border-radius: 40px;
+  border: solid 1px #bbb;
+  background-image: radial-gradient(#fff, #ccc);
+}
+
+.body {
+  width: 50px;
+  background-image: linear-gradient(90deg, #aaa, #ddd, #aaa);
+  height: 110px;
+  position: absolute;
+  top: 195px;
+  left: calc(50% - 25px);
+  border-radius: 0 0 25px 25px;
+  z-index: 1;
+  transform: perspective(10px) rotateX(-1deg);
+  border-bottom: solid 10px #888;
+}
+
+.left-arm,
+.right-arm {
+  width: 60px;
+  height: 30px;
+  background-image: linear-gradient(180deg, #ddd, #aaa);
+  position: absolute;
+  top: 240px;
+  z-index: 2;
+}
+
+.left-arm {
+  left: 30px;
+  transform: perspective(5px) rotateY(2deg) skew(0, -40deg);
+}
+
+.right-arm {
+  right: 30px;
+  transform: perspective(5px) rotateY(-2deg) skew(0, 40deg);
+}
+
+.left-jet,
+.right-jet {
+  height: 200px;
+  width: 25px;
+  position: absolute;
+  left: 10px;
+  top: 210px;
+  background-image: linear-gradient(90deg, #ccc, #fff, #ccc);
+  z-index: 3;
+  border-radius: 15px 15px 50% 50%;
+}
+
+.right-jet {
+  left: unset;
+  right: 10px;
+}
+
+.left-jet::before,
+.right-jet::before {
+  content: '';
+  width: 25px;
+  height: 12px;
+  background-color: red;
+  border-radius: 25px 25px 0 0;position: absolute;
+  border-bottom: solid 3px #aaa;
+  top: 0;
+  left: 0;
+  animation: jet-pulse 1s infinite alternate;
+}
+
+.left-jet::after,
+.right-jet::after {
+  content: '';
+  width: 2px;
+  height: 25px;
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  z-index: 4;
+  background-color: #eee;
+}
+
+@keyframes jet-pulse {
   from {
-    transform: rotate(0deg);
+    background-color: red;
+  } to {
+    background-color: #f80;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 440px) {
+  .enterprise {
+    transform: scale(.75, .75);
+  }
+  .countdown {
+    font-size: 2rem;
+    letter-spacing: 10px;
+  }
+  #title {
+    margin-bottom: 20px;
+    font-size: 2rem;
   }
 }
